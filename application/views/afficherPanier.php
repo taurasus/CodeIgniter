@@ -9,10 +9,9 @@ echo "<h1> Votre panier </h1> <br/>";
 $html = '';
 $bank = '0';
 //$nbArticles = sizeof($_SESSION['panier']);
-var_dump($_SESSION['panier']);
 
 foreach ($_SESSION['panier'] as $row) {
-    $html .= '<h2> Titre : ' . $row['livre']->titre . '</h2>';
+    // $html .= '<h2> Titre : ' . $row['livre']->image . '</h2>';
     // $html .= '<h2> Auteur : ' . $row['livre']->auteur . '</h2>';
     $html .= '<h2> Nombre demandé : ' . $row['nombre'] . '</h2>';
     $html .= '<h2> Montant : ' . $row['montant'] . '</h2> <br/> <br/>';

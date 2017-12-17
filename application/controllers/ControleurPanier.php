@@ -16,14 +16,15 @@ class ControleurPanier extends CI_Controller {
     function stocker() {
         $livre = $this->Dao->getLivre($_POST['isbn']);
         $choix = array('livre' => $livre, 'nombre' => $_POST['nombre_exemplaire'], 'montant' => $livre->prix * $_POST['nombre_exemplaire']);
-        /* if ($_SESSION['panier']['livre'] == $choix['livre'])  {*/
-        // A continuer pour juste ajouter le nombre d'exemplaire et changer le montant :)
-            if (!empty($_SESSION['panier'])) {
-                array_push($_SESSION['panier'], $choix);
+        if (!empty($_SESSION['panier'])) {
+            if ($_SESSION['panier']['livre'] == $choix['livre']) {
+                
             } else {
-                $_SESSION['panier'][0] = $choix;
+                array_push($_SESSION['panier'], $choix);
             }
-       // }
+        } else {
+            $_SESSION['panier'][0] = $choix;
+        }
 
         $this->load->view('afficherSelection', $choix);
     }
