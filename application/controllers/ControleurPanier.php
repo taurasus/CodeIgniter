@@ -17,11 +17,11 @@ class ControleurPanier extends CI_Controller {
         $livre = $this->Dao->getLivre($_POST['isbn']);
         $choix = array('livre' => $livre, 'nombre' => $_POST['nombre_exemplaire'], 'montant' => $livre->prix * $_POST['nombre_exemplaire']);
         if (!empty($_SESSION['panier'])) {
-            if ($_SESSION['panier']['livre'] == $choix['livre']) {
+            /*if ($_SESSION['panier']['livre'] == $choix['livre']) {
                 
-            } else {
+            } else {*/
                 array_push($_SESSION['panier'], $choix);
-            }
+            //}
         } else {
             $_SESSION['panier'][0] = $choix;
         }
